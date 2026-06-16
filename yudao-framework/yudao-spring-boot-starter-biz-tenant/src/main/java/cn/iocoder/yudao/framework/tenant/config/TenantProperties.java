@@ -19,7 +19,7 @@ public class TenantProperties {
     /**
      * 租户是否开启
      */
-    private static final Boolean ENABLE_DEFAULT = true;
+    private static final Boolean ENABLE_DEFAULT = false;
 
     /**
      * 是否开启
