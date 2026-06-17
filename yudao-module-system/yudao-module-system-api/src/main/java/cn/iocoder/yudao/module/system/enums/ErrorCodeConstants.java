@@ -168,4 +168,25 @@ public interface ErrorCodeConstants {
     // ========== 站内信发送 1-002-028-000 ==========
     ErrorCode NOTIFY_SEND_TEMPLATE_PARAM_MISS = new ErrorCode(1_002_028_000, "模板参数({})缺失");
 
+    // ========== App客户端认证 1-002-029-000 ==========
+    ErrorCode AUTH_CLIENT_LOGIN_BAD_CREDENTIALS = new ErrorCode(1_002_029_000, "客户端登录失败,账号或密钥错误");
+    ErrorCode AUTH_CLIENT_USER_DISABLED = new ErrorCode(1_002_029_001, "客户端用户已被禁用");
+    ErrorCode CLIENT_USER_NOT_EXISTS = new ErrorCode(1_002_029_002, "客户端用户不存在");
+    ErrorCode CLIENT_SECRET_GENERATE_FAILED = new ErrorCode(1_002_029_003, "客户端密钥生成失败");
+    ErrorCode CLIENT_USER_ALREADY_EXISTS = new ErrorCode(1_002_029_004, "该用户已生成客户端密钥");
+    
+    // ========== App客户端角色 1-002-030-000 ==========
+    ErrorCode CLIENT_ROLE_NOT_EXISTS = new ErrorCode(1_002_030_000, "客户端角色不存在");
+    ErrorCode CLIENT_ROLE_NAME_DUPLICATE = new ErrorCode(1_002_030_001, "已经存在名为【{}】的客户端角色");
+    ErrorCode CLIENT_ROLE_CODE_DUPLICATE = new ErrorCode(1_002_030_002, "已经存在标识为【{}】的客户端角色");
+    
+    // ========== App客户端菜单 1-002-031-000 ==========
+    ErrorCode CLIENT_MENU_NOT_EXISTS = new ErrorCode(1_002_031_000, "客户端菜单不存在");
+    ErrorCode CLIENT_MENU_EXISTS_CHILDREN = new ErrorCode(1_002_031_001, "存在子客户端菜单，无法删除");
+    ErrorCode CLIENT_MENU_NAME_DUPLICATE = new ErrorCode(1_002_031_002, "已经存在名为【{}】的客户端菜单");
+    ErrorCode CLIENT_MENU_COMPONENT_NAME_DUPLICATE = new ErrorCode(1_002_031_003, "已经存在组件名为【{}】的客户端菜单");
+    ErrorCode CLIENT_MENU_PARENT_ERROR = new ErrorCode(1_002_031_004, "不能设置自己为父客户端菜单");
+    ErrorCode CLIENT_MENU_PARENT_NOT_EXISTS = new ErrorCode(1_002_031_005, "父客户端菜单不存在");
+    ErrorCode CLIENT_MENU_PARENT_NOT_MENU = new ErrorCode(1_002_031_006, "父客户端菜单不能是按钮");
+
 }

@@ -6,7 +6,9 @@ import cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileUpdatePasswordReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileUpdateReqVO;
+import cn.iocoder.yudao.module.system.controller.app.client.vo.AppClientSecretRespVO;
 import cn.iocoder.yudao.module.system.convert.user.UserConvert;
+import cn.iocoder.yudao.module.system.service.app.AppClientUserService;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.permission.RoleDO;
@@ -46,6 +48,8 @@ public class UserProfileController {
     private PermissionService permissionService;
     @Resource
     private RoleService roleService;
+    @Resource
+    private AppClientUserService appClientUserService;
 
     @GetMapping("/get")
     @Operation(summary = "获得登录用户信息")
@@ -74,6 +78,27 @@ public class UserProfileController {
     public CommonResult<Boolean> updateUserProfilePassword(@Valid @RequestBody UserProfileUpdatePasswordReqVO reqVO) {
         userService.updateUserPassword(getLoginUserId(), reqVO);
         return success(true);
+    }
+
+    @GetMapping("/client-secret")
+    @Operation(summary = "获得登录用户的客户端密钥信息")
+    public CommonResult<AppClientSecretRespVO> getUserClientSecret() {
+        AppClientSecretRespVO respVO = appClientUserService.getClientSecretInfo(getLoginUserId());
+        return success(respVO);
+    }
+
+    @PostMapping("/client-secret")
+    @Operation(summary = "生成客户端密钥")
+    public CommonResult<AppClientSecretRespVO> generateUserClientSecret() {
+        AppClientSecretRespVO respVO = appClientUserService.generateClientSecret(getLoginUserId());
+        return success(respVO);
+    }
+
+    @PutMapping("/client-secret")
+    @Operation(summary = "重置客户端密钥")
+    public CommonResult<AppClientSecretRespVO> resetUserClientSecret() {
+        AppClientSecretRespVO respVO = appClientUserService.resetClientSecret(getLoginUserId());
+        return success(respVO);
     }
 
 }

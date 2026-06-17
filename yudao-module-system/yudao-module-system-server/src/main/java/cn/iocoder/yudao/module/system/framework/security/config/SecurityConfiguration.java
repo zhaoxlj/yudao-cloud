@@ -32,6 +32,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/actuator/**").permitAll();
                 // RPC 服务的安全配置
                 registry.requestMatchers(ApiConstants.PREFIX + "/**").permitAll();
+                
             }
 
         };
